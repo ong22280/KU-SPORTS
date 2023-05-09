@@ -14,21 +14,23 @@ datasource db {
 
 // command to push db
 // npx prisma db push
+// command to migrate db
+// npx prisma migrate dev --name init
 model Sport {
   id          Int       @id @default(autoincrement())
   name        String
   main_image  String
-  images      String[]  // [] is used to define an array
+  images      String[] // [] is used to define an array
   description String
   open_time   String
   close_time  String
   slug        String    @unique
   price       PRICE
-  items       Item[]    // items is used to define a relation to another model (many)
+  items       Item[] // items is used to define a relation to another model (many)
   location_id Int
   location    Location  @relation(fields: [location_id], references: [id])
-  cuisine_id  Int
-  cuisine     Type   @relation(fields: [cuisine_id], references: [id])
+  type_id     Int
+  type        Type      @relation(fields: [type_id], references: [id])
   reviews     Review[]
   bookings    Booking[]
   tables      Court[]
@@ -37,38 +39,38 @@ model Sport {
 }
 
 model Item {
-  id            Int        @id @default(autoincrement())
-  name          String
-  price         String // price is stored as a string to allow for free text input
-  description   String
-  sport_id Int
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       String // price is stored as a string to allow for free text input
+  description String
+  sport_id    Int
   // sport is used to define a relation to another model
-  sport    Sport @relation(fields: [sport_id], references: [id])
-  created_at    DateTime   @default(now())
-  updated_at    DateTime   @updatedAt
+  sport       Sport    @relation(fields: [sport_id], references: [id])
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Location {
-  id          Int          @id @default(autoincrement())
-  name        String
-  sports Sport[]
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+  id         Int      @id @default(autoincrement())
+  name       String
+  sports     Sport[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Type {
-  id          Int          @id @default(autoincrement())
-  name        String
-  sports Sport[]
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+  id         Int      @id @default(autoincrement())
+  name       String
+  sports     Sport[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model User {
   id         Int      @id @default(autoincrement())
   first_name String
   last_name  String
-  city       String
+  faculty       String
   password   String
   email      String   @unique
   phone      String
@@ -78,15 +80,15 @@ model User {
 }
 
 model Review {
-  id            Int        @id @default(autoincrement())
-  first_name    String
-  last_name     String
-  text          String
-  rating        Float
-  sport_id Int
-  sport    Sport @relation(fields: [sport_id], references: [id])
-  user_id       Int
-  user          User       @relation(fields: [user_id], references: [id])
+  id         Int    @id @default(autoincrement())
+  first_name String
+  last_name  String
+  text       String
+  rating     Float
+  sport_id   Int
+  sport      Sport  @relation(fields: [sport_id], references: [id])
+  user_id    Int
+  user       User   @relation(fields: [user_id], references: [id])
 }
 
 model Booking {
@@ -99,21 +101,21 @@ model Booking {
   booker_last_name  String
   booker_occasion   String?
   booker_request    String?
-  sport_id     Int
-  sport        Sport         @relation(fields: [sport_id], references: [id])
+  sport_id          Int
+  sport             Sport              @relation(fields: [sport_id], references: [id])
   tables            BookingsOnCourts[]
   created_at        DateTime           @default(now())
   updated_at        DateTime           @updatedAt
 }
 
 model Court {
-  id            Int                @id @default(autoincrement())
-  seats         Int
-  sport_id Int
-  sport    Sport         @relation(fields: [sport_id], references: [id])
-  bookings      BookingsOnCourts[]
-  created_at    DateTime           @default(now())
-  updated_at    DateTime           @updatedAt
+  id         Int                @id @default(autoincrement())
+  seats      Int
+  sport_id   Int
+  sport      Sport              @relation(fields: [sport_id], references: [id])
+  bookings   BookingsOnCourts[]
+  created_at DateTime           @default(now())
+  updated_at DateTime           @updatedAt
 }
 
 model BookingsOnCourts {
