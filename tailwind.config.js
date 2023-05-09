@@ -30,10 +30,6 @@ module.exports = {
   // fontSize: is used to define the font sizes for your project
   fontSize: {
     "2xsm": "10px",
-    xsm: "12px",
-    sm: "13px",
-    reg: "15px",
-    lg: "18px",
     "2xl": "22px",
     "3xl": "25px",
     "4xl": "32px",

@@ -12,7 +12,7 @@ export default function RestaurantCard({ sport }: SportCardProps) {
   const spellingOfPlurals = () => (sport.reviews.length > 1 ? "s" : "");
 
   return (
-    <div className="w-64 m-3 h-72 overflow-hidden border rounded cursor-pointer sm:min-w-[300px] md:min-w-min">
+    <div className="w-64 m-3 h-72 overflow-hidden border rounded cursor-pointer min-w-[300px] md:min-w-min">
       <Link href={`/sport/${sport.slug}`}>
         {/* use Image component from next/image instead of img tag
         <img src={sport.main_image} alt="" className="w-full h-36" /> */}

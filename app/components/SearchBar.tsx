@@ -28,9 +28,9 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex justify-center m-auto text-lg text-left md:py-3 sm:py-1">
+    <div className="flex justify-center py-1 m-auto text-lg text-left md:py-3">
       <input
-        className="rounded mr-3 p-2 md:w-[450px] sm:w-[250px]"
+        className="rounded mr-3 p-2 md:w-[450px] w-[250px]"
         type="text"
         placeholder="ชื่อกีฬา"
         value={location}
@@ -38,7 +38,7 @@ export default function SearchBar() {
         onKeyPress={onKeyPressSearchHandler}
       />
       <button
-        className="py-2 text-white bg-yellow-600 rounded md:px-9 sm:px-4"
+        className="px-4 py-2 text-white bg-yellow-600 rounded md:px-9"
         onClick={onClickSearchHandler}
       >
         ค้นหา

@@ -108,7 +108,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="sm:w-[350px] md:w-[400px]">
+        <Box sx={style} className="w-[350px] md:w-[400px]">
           {loading ? (
             <div className="flex justify-center px-2 py-24">
               <CircularProgress />
