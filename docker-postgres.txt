@@ -1,0 +1,19 @@
+postgres
+    http://hub.docker.com/_/postgres
+
+how to use this image
+    start a postgres instance
+        -e is for setting environment variables
+        --name is for setting the name of the container
+        -d is for running the container in detached mode (in the background, service mode)
+        --link is for linking this container to another container
+        -p is for mapping a port from the container to the host
+        -v is for mapping a volume from the container to the host
+        --rm is for removing the container as soon as it's stopped
+
+    docker run --name name-of-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 -v pgvolume:/var/lib/postgresql/data name-of-image
+    docker run --name ong-postgres -e POSTGRES_USER=ong22280 -e POSTGRES_PASSWORD=1234 -d -p 5432:5432 -v pgvolume:/var/lib/postgresql/data postgres
+
+pgadmin4
+    docker pull dpage/pgadmin4
+    docker run --name nameofcontainer -p 80:80 -e 'PGADMIN_DEFAULT_EMAIL=ong22280@gmail.com' -e 'PGADMIN_DEFAULT_PASSWORD=1234' -d dpage/pgadmin4
