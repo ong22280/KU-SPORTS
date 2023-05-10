@@ -88,7 +88,7 @@ export default async function Search({
   return (
     <>
       <SearchHeader />
-      <div className="flex w-2/3 py-4 m-auto md:items-start md:justify-between flex-col md:flex-row justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-11/12 py-4 m-auto md:items-start md:justify-between md:flex-row">
         <SearchSideBar
           locations={locations}
           types={types}

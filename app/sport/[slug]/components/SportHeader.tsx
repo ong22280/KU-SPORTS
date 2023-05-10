@@ -7,7 +7,7 @@ export default function SportHeader({ name }: { name: string }) {
 
   return (
     <div className="h-48 overflow-hidden md:h-96">
-      <div className="bg-center bg-gradient-to-r from-[#0f471b] to-[#60845f] h-full flex justify-center items-center">
+      <div className="bg-center bg-gradient-to-r from-[#0f471b] to-[#5f8465] h-full flex justify-center items-center">
         <h1 className="text-4xl text-center text-white capitalize md:text-7xl text-shadow">
           {name}
         </h1>
