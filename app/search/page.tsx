@@ -17,7 +17,9 @@ const fetchSportsByName = (searchParams: SearchParams) => {
 
   if (searchParams.nameSport) {
     const nameSport = {
-        equals: searchParams.nameSport,
+        // equals: searchParams.nameSport,
+        contains: searchParams.nameSport.toLowerCase(),
+        
     };
     where.name = nameSport;
   }

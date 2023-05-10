@@ -15,7 +15,10 @@ export default function SearchBar() {
     setName(e.target.value);
   };
   const onClickSearchHandler = () => {
-    if (name === "") return;
+    if (name === "") {
+      router.push(`/search`);
+      return;
+    }
     router.push(`/search?nameSport=${name}`);
     setName("");
   };
