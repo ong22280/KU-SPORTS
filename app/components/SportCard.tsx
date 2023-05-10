@@ -29,7 +29,7 @@ export default function SportCard({ sport }: SportCardProps) {
           <div className="flex items-start">
             <Stars reviews={sport.reviews} />
             <p className="ml-2">
-              {sport.reviews.length} review{spellingOfPlurals()}
+              {sport.reviews.length} รีวิว
             </p>
           </div>
           <div className="flex font-light capitalize text-reg">
