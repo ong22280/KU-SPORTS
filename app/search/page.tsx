@@ -6,21 +6,20 @@ import { PRICE, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 interface SearchParams {
-  faculty?: string; // property? means optional
+  nameSport?: string; // property? means optional
   type?: string;
   price?: PRICE;
+  location?: string;
 }
 
-const fetchSportsByFaculty = (searchParams: SearchParams) => {
+const fetchSportsByName = (searchParams: SearchParams) => {
   const where: any = {};
 
-  if (searchParams.faculty) {
-    const location = {
-      name: {
-        equals: searchParams.faculty.toLowerCase(),
-      },
+  if (searchParams.nameSport) {
+    const nameSport = {
+        equals: searchParams.nameSport,
     };
-    where.location = location;
+    where.name = nameSport;
   }
   if (searchParams.type) {
     const type = {
@@ -35,6 +34,14 @@ const fetchSportsByFaculty = (searchParams: SearchParams) => {
       equals: searchParams.price,
     };
     where.price = price;
+  }
+  if (searchParams.location) {
+    const location = {
+      name: {
+        equals: searchParams.location.toLowerCase(),
+      },
+    };
+    where.location = location;
   }
 
   const select = {
@@ -58,6 +65,10 @@ const fetchLocations = async () => {
   return prisma.location.findMany();
 };
 
+const fetchName = async () => {
+  return prisma.sport.findMany();
+};
+
 const fetchTypes = async () => {
   return prisma.type.findMany();
 };
@@ -68,13 +79,14 @@ export default async function Search({
 }: {
   searchParams: SearchParams;
 }) {
-  const sports = await fetchSportsByFaculty(searchParams);
+  const sports = await fetchSportsByName(searchParams);
   const locations = await fetchLocations();
+  const name = await fetchName();
   const types = await fetchTypes();
 
   const checkSport = () => {
     if (sports.length === 0) {
-      return <p>Sorry, we found no sports in this area</p>;
+      return <p>ขออภัย ไม่พบกีฬาดังกล่าว</p>;
     }
     return (
       <>
@@ -92,6 +104,7 @@ export default async function Search({
         <SearchSideBar
           locations={locations}
           types={types}
+          name={name}
           searchParams={searchParams}
         />
         <div className="w-5/6">{checkSport()}</div>

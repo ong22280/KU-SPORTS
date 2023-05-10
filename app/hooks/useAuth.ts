@@ -87,10 +87,10 @@ const useAuth = () => {
         loadingContext: false,
       });
       handleClose();
-    } catch (errorContext: any) {
+    } catch (error: any) {
       setAuthState({
         dataContext: null,
-        errorContext: errorContext.response.dataContext.errorMessage,
+        errorContext: error.response.data.errorMessage,
         loadingContext: false,
       });
     }

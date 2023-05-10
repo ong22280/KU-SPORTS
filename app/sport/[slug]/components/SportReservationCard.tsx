@@ -116,14 +116,23 @@ export default function SportReservationCard({
       </div>
       <div className="mt-5">
         {dataContext ? (
-          <button className="w-full h-16 px-4 font-bold text-white bg-red-600 rounded">
-          {loading ? <CircularProgress color="inherit" /> : "ค้นหาเวลาที่ว่าง"}
-        </button> ) : (
+          <button
+            className="w-full h-16 px-4 font-bold text-white bg-red-600 rounded"
+            onClick={handleClick}
+            disabled={loading}
+          >
+            {loading ? (
+              <CircularProgress color="inherit" />
+            ) : (
+              "ค้นหาเวลาที่ว่าง"
+            )}
+          </button>
+        ) : (
           // กรุณาเข้าสู่ระบบก่อนทำการจอง
           <div className="flex items-center justify-center w-full h-16 px-4 font-bold text-white align-middle bg-gray-600 rounded">
             กรุณาเข้าสู่ระบบ
-          </div>)
-        }
+          </div>
+        )}
       </div>
       {data && data.length ? (
         <div className="mt-4">

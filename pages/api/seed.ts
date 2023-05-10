@@ -135,7 +135,7 @@ export default async function handler(
             close_time: "16:30:00.000Z",
             slug: "เทนนิส",
             location_id: sportClubBuildingId,
-            type_id: speedId,
+            type_id: netRacketId,
         },
     ],
   });

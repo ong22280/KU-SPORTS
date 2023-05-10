@@ -9,15 +9,15 @@ import { KeyboardEvent } from "react";
 
 export default function SearchBar() {
   const router = useRouter();
-  const [location, setLocation] = useState("");
+  const [name, setName] = useState("");
 
   const onChangeSearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+    setName(e.target.value);
   };
   const onClickSearchHandler = () => {
-    if (location === "") return;
-    router.push(`/search?faculty=${location}`);
-    setLocation("");
+    if (name === "") return;
+    router.push(`/search?nameSport=${name}`);
+    setName("");
   };
 
   // press enter to search
@@ -33,7 +33,7 @@ export default function SearchBar() {
         className="rounded mr-3 p-2 md:w-[450px] w-[250px]"
         type="text"
         placeholder="ชื่อกีฬา"
-        value={location}
+        value={name}
         onChange={onChangeSearchHandler}
         onKeyPress={onKeyPressSearchHandler}
       />

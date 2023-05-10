@@ -1,12 +1,14 @@
-import { Type, Location, PRICE } from "@prisma/client";
+import { Type, Location, PRICE, Sport } from "@prisma/client";
 import Link from "next/link";
 
 export default function SearchSideBar({
   locations,
+  name,
   types,
   searchParams,
 }: {
   locations: Location[];
+  name: Sport[];
   types: Type[];
   searchParams: { faculty?: string; type?: string; price?: PRICE };
 }) {
@@ -44,7 +46,7 @@ export default function SearchSideBar({
               pathname: "/search",
               query: {
                 ...searchParams, // spread operator to copy all the properties of searchParams
-                faculty: location.name,
+                location: location.name,
               },
             }}
             className="font-light capitalize text-reg"
