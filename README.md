@@ -1,7 +1,7 @@
 # KU sport
 
 This is a example project for KU sport booking system.
-<img src="../../test/ku-sports/public/Screenshot%202023-05-10%20190631.png" width="100%" style="border-radius: 10px;" >
+![](public/readme-img.png)
 ## Getting Started
 
 First, setting .env file and run the development server:
