@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
 import useAuth from "../../app/hooks/useAuth";
-// client components can use context to get data from the server
+// client components can use context to get dataContext from the server
 import { AuthenticationContext } from "../context/AuthContext";
 import { Alert, CircularProgress } from "@mui/material";
 
@@ -28,7 +28,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { signin, signup } = useAuth();
-  const { loading, data, error } = useContext(AuthenticationContext);
+  const { loadingContext, dataContext, errorContext } = useContext(AuthenticationContext);
 
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignin ? signinContent : signupContent;
@@ -109,15 +109,15 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="w-[350px] md:w-[400px]">
-          {loading ? (
+          {loadingContext ? (
             <div className="flex justify-center px-2 py-24">
               <CircularProgress />
             </div>
           ) : (
             <div className="p-2">
-              {error ? (
+              {errorContext ? (
                 <Alert severity="error" className="mb-4">
-                  {error}
+                  {errorContext}
                 </Alert>
               ) : null}
               <div className="pb-2 mb-2 font-bold text-center uppercase border-b">

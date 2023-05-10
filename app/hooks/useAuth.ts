@@ -19,12 +19,12 @@ const useAuth = () => {
     handleClose: () => void
   ) => {
     setAuthState({
-      data: null,
-      error: null,
-      loading: true,
+      dataContext: null,
+      errorContext: null,
+      loadingContext: true,
     });
     try {
-      // axios.post("api url", { data }) is the same as fetch("api url", { method: "POST", body: JSON.stringify({ data }) })
+      // axios.post("api url", { dataContext }) is the same as fetch("api url", { method: "POST", body: JSON.stringify({ dataContext }) })
       const response = await axios.post(
         "http://localhost:3000/api/auth/signin",
         {
@@ -33,16 +33,16 @@ const useAuth = () => {
         }
       );
       setAuthState({
-        data: response.data,
-        error: null,
-        loading: false,
+        dataContext: response.data,
+        errorContext: null,
+        loadingContext: false,
       });
       handleClose();
     } catch (error: any) {
       setAuthState({
-        data: null,
-        error: error.response.data.errorMessage,
-        loading: false,
+        dataContext: null,
+        errorContext: error.response.data.errorMessage,
+        loadingContext: false,
       });
     }
   };
@@ -65,9 +65,9 @@ const useAuth = () => {
     handleClose: () => void
   ) => {
     setAuthState({
-      data: null,
-      error: null,
-      loading: true,
+      dataContext: null,
+      errorContext: null,
+      loadingContext: true,
     });
     try {
       const response = await axios.post(
@@ -82,16 +82,16 @@ const useAuth = () => {
         }
       );
       setAuthState({
-        data: response.data,
-        error: null,
-        loading: false,
+        dataContext: response.data,
+        errorContext: null,
+        loadingContext: false,
       });
       handleClose();
-    } catch (error: any) {
+    } catch (errorContext: any) {
       setAuthState({
-        data: null,
-        error: error.response.data.errorMessage,
-        loading: false,
+        dataContext: null,
+        errorContext: errorContext.response.dataContext.errorMessage,
+        loadingContext: false,
       });
     }
   };
@@ -100,9 +100,9 @@ const useAuth = () => {
     removeCookies("jwt");
 
     setAuthState({
-      data: null,
-      error: null,
-      loading: false,
+      dataContext: null,
+      errorContext: null,
+      loadingContext: false,
     });
   };
 

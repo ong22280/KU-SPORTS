@@ -8,7 +8,7 @@ interface SportCardProps {
   sport: SportCardType;
 }
 
-export default function RestaurantCard({ sport }: SportCardProps) {
+export default function SportCard({ sport }: SportCardProps) {
   const spellingOfPlurals = () => (sport.reviews.length > 1 ? "s" : "");
 
   return (

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { getCookie } from "cookies-next";
+import error from "next/error";
 import React, { useState, createContext, useEffect } from "react";
 
 interface User {
@@ -14,9 +15,9 @@ interface User {
 }
 
 interface State {
-  loading: boolean;
-  error: string | null;
-  data: User | null;
+  loadingContext: boolean;
+  errorContext: string | null;
+  dataContext: User | null;
 }
 
 interface AuthState extends State {
@@ -24,9 +25,9 @@ interface AuthState extends State {
 }
 
 export const AuthenticationContext = createContext<AuthState>({
-  loading: false, // true if we are fetching data
-  error: null,
-  data: null,
+  loadingContext: false, // true if we are fetching dataContext
+  errorContext: null,
+  dataContext: null,
   setAuthState: () => {},
 });
 
@@ -36,25 +37,25 @@ export default function AuthContext({
   children: React.ReactNode;
 }) {
   const [authState, setAuthState] = useState<State>({
-    loading: true,
-    data: null,
-    error: null,
+    loadingContext: true,
+    dataContext: null,
+    errorContext: null,
   });
 
   const fetchUser = async () => {
     setAuthState({
-      data: null,
-      error: null,
-      loading: true,
+      dataContext: null,
+      errorContext: null,
+      loadingContext: true,
     });
     try {
       const jwt = getCookie("jwt");
 
       if (!jwt) {
         return setAuthState({
-          data: null,
-          error: null,
-          loading: false,
+          dataContext: null,
+          errorContext: null,
+          loadingContext: false,
         });
       }
 
@@ -67,15 +68,15 @@ export default function AuthContext({
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
       setAuthState({
-        data: response.data,
-        error: null,
-        loading: false,
+        dataContext: response.data,
+        errorContext: null,
+        loadingContext: false,
       });
-    } catch (error: any) {
+    } catch (errorContext: any) {
       setAuthState({
-        data: null,
-        error: error.response.data.errorMessage,
-        loading: false,
+        dataContext: null,
+        errorContext: errorContext.response.data.errorMessage,
+        loadingContext: false,
       });
     }
   };

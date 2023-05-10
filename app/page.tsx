@@ -32,7 +32,7 @@ const prisma = new PrismaClient();
         'https://resizer.otstatic.com/v2/photos/xlarge/1/32484701.jpg',
         'https://resizer.otstatic.com/v2/photos/xlarge/1/32484708.jpg'
       ],
-      description: 'Vivaan is Modern Indian Cuisine serving dishes from different regions of India. We carefully select our ingredients and use them to make authentic Indian recipes and our chef puts his modern flair and twists to the dishes.',
+      description: 'Vivaan is Modern Indian Type serving dishes from different regions of India. We carefully select our ingredients and use them to make authentic Indian recipes and our chef puts his modern flair and twists to the dishes.',
       open_time: '14:30:00.000Z',
       close_time: '21:30:00.000Z',
       slug: 'vivaan-fine-indian-type-ottawa',

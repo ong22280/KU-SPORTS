@@ -118,6 +118,25 @@ export default async function handler(
             location_id: sportClubBuildingId,
             type_id: speedId,
         },
+
+        // ตาข่าย/แร็กเก็ต
+        {
+            name: "เทนนิส",
+            main_image:
+                "https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/316800635_630820958834771_3519709165938662839_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeF9LCl9bbH5-R3B96tBRnZb6hzHsJsBn_DqHMewmwGf8A0_xhnLuR5fWWJ6aKrQREsqbgwHLnmVhVvQH-yE9L5T&_nc_ohc=9qJMCKl3PpkAX9qZhpg&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfAHOxL4ShA9lvl1xSbgs85PdAtqwECr4F53V_VY7kCzTQ&oe=645F9903",
+            price: PRICE.REGULAR,
+            description:
+                "สระว่ายน้ำขนาด 50 เมตร มี 8 สาย สามารถใช้ได้ทั้งสองสาย สายละ 4 สาย สามารถใช้ได้ทั้งสองสาย สายละ 4 สาย สามารถใช้ได้ทั้งสองสาย สายละ 4 สาย สามารถใช้ได้ทั้งสองสาย สายละ 4 สาย",
+            images: [
+                "https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/316800635_630820958834771_3519709165938662839_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeF9LCl9bbH5-R3B96tBRnZb6hzHsJsBn_DqHMewmwGf8A0_xhnLuR5fWWJ6aKrQREsqbgwHLnmVhVvQH-yE9L5T&_nc_ohc=9qJMCKl3PpkAX9qZhpg&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfAHOxL4ShA9lvl1xSbgs85PdAtqwECr4F53V_VY7kCzTQ&oe=645F9903",
+                "https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/316800635_630820958834771_3519709165938662839_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeF9LCl9bbH5-R3B96tBRnZb6hzHsJsBn_DqHMewmwGf8A0_xhnLuR5fWWJ6aKrQREsqbgwHLnmVhVvQH-yE9L5T&_nc_ohc=9qJMCKl3PpkAX9qZhpg&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfAHOxL4ShA9lvl1xSbgs85PdAtqwECr4F53V_VY7kCzTQ&oe=645F9903",
+            ],
+            open_time: "14:30:00.000Z",
+            close_time: "16:30:00.000Z",
+            slug: "เทนนิส",
+            location_id: sportClubBuildingId,
+            type_id: speedId,
+        },
     ],
   });
 

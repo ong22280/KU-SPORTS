@@ -38,7 +38,7 @@ export default function SearchBar() {
         onKeyPress={onKeyPressSearchHandler}
       />
       <button
-        className="px-4 py-2 text-white bg-yellow-600 rounded md:px-9"
+        className="px-4 py-2 text-white bg-red-600 rounded md:px-9"
         onClick={onClickSearchHandler}
       >
         ค้นหา

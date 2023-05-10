@@ -7,7 +7,7 @@ import { AuthenticationContext } from "../context/AuthContext";
 import useAuth from "../hooks/useAuth";
 
 export default function NavBar() {
-  const { data, loading } = useContext(AuthenticationContext);
+  const { dataContext, loadingContext } = useContext(AuthenticationContext);
   const { signout } = useAuth();
   return (
     <nav className="flex justify-between p-2 bg-white">
@@ -15,9 +15,9 @@ export default function NavBar() {
         KUsports{" "}
       </Link>
       <div>
-        {loading ? null : (
+        {loadingContext ? null : (
           <div className="flex">
-            {data ? (
+            {dataContext ? (
               <button
                 className="p-1 px-4 mr-3 text-white bg-green-400 border rounded"
                 onClick={signout}

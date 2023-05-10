@@ -1,82 +1,72 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// generator client is used to generate Prisma Client JS
 generator client {
   provider = "prisma-client-js"
 }
 
-// generator typegraphql is used to generate TypeGraphQL classes
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// command to push db
-// npx prisma db push
-// command to migrate db
-// npx prisma migrate dev --name init
 model Sport {
   id          Int       @id @default(autoincrement())
   name        String
   main_image  String
-  images      String[] // [] is used to define an array
+  images      String[]
   description String
   open_time   String
   close_time  String
   slug        String    @unique
   price       PRICE
-  items       Item[] // items is used to define a relation to another model (many)
   location_id Int
-  location    Location  @relation(fields: [location_id], references: [id])
-  type_id     Int
-  type        Type      @relation(fields: [type_id], references: [id])
-  reviews     Review[]
-  bookings    Booking[]
-  tables      Court[]
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
+  type_id     Int
+  bookings    Booking[]
+  courts      Court[]
+  items       Item[]
+  reviews     Review[]
+  location    Location  @relation(fields: [location_id], references: [id])
+  type        Type      @relation(fields: [type_id], references: [id])
 }
 
 model Item {
   id          Int      @id @default(autoincrement())
   name        String
-  price       String // price is stored as a string to allow for free text input
+  price       String
   description String
   sport_id    Int
-  // sport is used to define a relation to another model
-  sport       Sport    @relation(fields: [sport_id], references: [id])
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+  sport       Sport    @relation(fields: [sport_id], references: [id])
 }
 
 model Location {
   id         Int      @id @default(autoincrement())
   name       String
-  sports     Sport[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  sports     Sport[]
 }
 
 model Type {
   id         Int      @id @default(autoincrement())
   name       String
-  sports     Sport[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  sports     Sport[]
 }
 
 model User {
   id         Int      @id @default(autoincrement())
   first_name String
   last_name  String
-  faculty    String
   password   String
   email      String   @unique
   phone      String
-  reviews    Review[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  faculty    String
+  reviews    Review[]
 }
 
 model Review {
@@ -86,8 +76,8 @@ model Review {
   text       String
   rating     Float
   sport_id   Int
-  sport      Sport  @relation(fields: [sport_id], references: [id])
   user_id    Int
+  sport      Sport  @relation(fields: [sport_id], references: [id])
   user       User   @relation(fields: [user_id], references: [id])
 }
 
@@ -102,34 +92,33 @@ model Booking {
   booker_occasion   String?
   booker_request    String?
   sport_id          Int
-  sport             Sport              @relation(fields: [sport_id], references: [id])
-  tables            BookingsOnCourts[]
   created_at        DateTime           @default(now())
   updated_at        DateTime           @updatedAt
+  sport             Sport              @relation(fields: [sport_id], references: [id])
+  courts            BookingsOnCourts[]
 }
 
 model Court {
   id         Int                @id @default(autoincrement())
   seats      Int
   sport_id   Int
-  sport      Sport              @relation(fields: [sport_id], references: [id])
-  bookings   BookingsOnCourts[]
   created_at DateTime           @default(now())
   updated_at DateTime           @updatedAt
+  bookings   BookingsOnCourts[]
+  sport      Sport              @relation(fields: [sport_id], references: [id])
 }
 
 model BookingsOnCourts {
   booking_id Int
-  booking    Booking  @relation(fields: [booking_id], references: [id])
-  table_id   Int
-  table      Court    @relation(fields: [table_id], references: [id])
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  court_id   Int
+  booking    Booking  @relation(fields: [booking_id], references: [id])
+  court      Court    @relation(fields: [court_id], references: [id])
 
-  @@id([booking_id, table_id])
+  @@id([booking_id, court_id])
 }
 
-// Enum is used to define a set of allowed values
 enum PRICE {
   CHEAP
   REGULAR
