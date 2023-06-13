@@ -8,6 +8,7 @@ First, setting .env file and run the development server:
 
 ```bash
 npm install
+cp .env.example .env
 npx prisma db push
 npm run dev
 ```
